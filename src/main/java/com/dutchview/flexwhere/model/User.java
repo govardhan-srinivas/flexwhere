@@ -1,12 +1,12 @@
 package com.dutchview.flexwhere.model;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -22,6 +22,7 @@ public class User {
     @NotNull(message = "First name field is required") @Length(min = 1, max = 30) private String firstName;
     private String lastName;
     private String email;
+    @Range(min = 0L, message = "Please select positive numbers Only")
     private Integer age = 0;
     private String address;
     @CreatedDate
